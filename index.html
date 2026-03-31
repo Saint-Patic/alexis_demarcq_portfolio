@@ -1,1 +1,91 @@
-Hello World !
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Alexis Demarcq</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="container">
+    <h1>Portfolio - Alexis Demarcq</h1>
+    <p>Tableau récapitulatif des participations et heures validées.</p>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>Thèmes</th>
+                <th>Heures Contribuées</th>
+                <th>Heures Comptabilisées</th>
+                <th>Preuves</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Conférences</td>
+                <td></td>
+                <td></td>
+                <td><button class="proof-btn" onclick="openModal('Preuve', '')">Voir la preuve</button></td>
+            </tr>
+            <tr>
+                <td>Let's Fix IT 2025</td>
+                <td>2h</td>
+                <td>2h</td>
+                <td><button class="proof-btn" onclick="openModal('Preuve', '')">Voir la preuve</button></td>
+            </tr>
+            <tr>
+                <td>Let's Fix IT 2026</td>
+                <td>3h</td>
+                <td>3h</td>
+                <td><button class="proof-btn" onclick="openModal('Preuve', '')">Voir la preuve</button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div id="proofModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <h2 id="modal-title">Preuve</h2>
+        <img id="proof-image" src="" alt="Preuve non disponible" style="display:none;" />
+        <p id="proof-text" style="display:none;"></p>
+    </div>
+</div>
+
+<script>
+    const modal = document.getElementById("proofModal");
+    const modalTitle = document.getElementById("modal-title");
+    const proofImage = document.getElementById("proof-image");
+    const proofText = document.getElementById("proof-text");
+
+    function openModal(title, imageUrl) {
+        modalTitle.innerText = title;
+        
+        if (imageUrl) {
+            proofImage.src = imageUrl;
+            proofImage.style.display = "block";
+            proofText.style.display = "none";
+        } else {
+            proofImage.style.display = "none";
+            proofText.innerText = "Aucun fichier image trouvé pour cette preuve.";
+            proofText.style.display = "block";
+        }
+        
+        modal.style.display = "block";
+    }
+
+    function closeModal() {
+        modal.style.display = "none";
+    }
+
+    // Fermer la modale si on clique en dehors
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            closeModal();
+        }
+    }
+</script>
+
+</body>
+</html>
