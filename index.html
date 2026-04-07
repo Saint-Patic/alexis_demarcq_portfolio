@@ -27,40 +27,40 @@
                 <td>Conférences</td>
                 <td>Cloud avec M365 et Azure Infrastructure</td>
                 <td>2h</td>
-                <td>2h</td>
+                <td class="hours-comptabilisees">2h</td>
                 <td><button class="proof-btn" onclick="openModal('Preuve', 'img/preuve_conf_azure.png')">Voir la preuve</button></td>
             </tr>
             <tr>
                 <td>Electronique</td>
                 <td>Let's Fix IT 2025</td>
                 <td>2h</td>
-                <td>2h</td>
+                <td class="hours-comptabilisees">2h</td>
                 <td><button class="proof-btn" onclick="openModal('Preuve', 'img/LetsFixIT_2025_recto.jpg')">Voir la preuve</button></td>
             </tr>
             <tr>
                 <td>Electronique</td>
                 <td>Let's Fix IT 2026</td>
                 <td>3h</td>
-                <td>3h</td>
+                <td class="hours-comptabilisees">3h</td>
                 <td><button class="proof-btn" onclick="openModal('Preuve', 'img/LetsFixIT_2026_recto.jpg')">Voir la preuve</button></td>
             </tr>
             <tr>
                 <td>Hackaton</td>
                 <td>Cyber Security Challenge 2025</td>
                 <td>18h</td>
-                <td>10h</td>
+                <td class="hours-comptabilisees">10h</td>
                 <td><button class="proof-btn" onclick="openModal('Preuve', 'img/preuve_conf_azure.png')">Voir la preuve</button></td>
             </tr>
             <tr>
                 <td>Hackaton</td>
                 <td>Cyber Security Challenge 2026</td>
                 <td>18h</td>
-                <td>10h</td>
+                <td class="hours-comptabilisees">10h</td>
                 <td><button class="proof-btn" onclick="openModal('Preuve', 'img/preuve_conf_azure.png')">Voir la preuve</button></td>
             </tr>
             <tr style="font-weight: bold; background-color: #ecf0f1;">
                 <td colspan="3" style="text-align: right;">TOTAL</td>
-                <td>27h</td>
+                <td id="total-hours"></td>
                 <td>-</td>
             </tr>
         </tbody>
@@ -108,6 +108,24 @@
             closeModal();
         }
     }
+
+    function calculateTotal() {
+        const hoursCells = document.querySelectorAll('.hours-comptabilisees');
+        let total = 0;
+
+        hoursCells.forEach(cell => {
+            const text = cell.textContent;
+            const hours = parseInt(text.replace('h', ''));
+            if (!isNaN(hours)) {
+                total += hours;
+            }
+        });
+
+        document.getElementById('total-hours').textContent = total + 'h';
+    }
+
+    // Calculer le total au chargement de la page
+    document.addEventListener('DOMContentLoaded', calculateTotal);
 </script>
 
 </body>
