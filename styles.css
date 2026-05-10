@@ -134,3 +134,16 @@ tr:hover {
 .cv-download-btn:hover {
     background-color: #2980b9;
 }
+.cv-viewer {
+    width: 100%;
+    height: 800px;
+    margin-top: 20px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    overflow: hidden;
+}
+.cv-viewer iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
