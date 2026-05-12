@@ -42,10 +42,19 @@ h1 {
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
+
+/* Table wrapper pour scroll horizontal sur mobile */
+.table-wrapper {
+    overflow-x: auto;
+    margin-top: 20px;
+    border-radius: 4px;
+    -webkit-overflow-scrolling: touch;
+}
+
 table {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 20px;
+    margin-top: 0;
 }
 th, td {
     text-align: left;
@@ -69,6 +78,7 @@ tr:hover {
     border-radius: 4px;
     cursor: pointer;
     transition: background 0.3s;
+    white-space: nowrap;
 }
 .proof-btn:hover {
     background-color: #27ae60;
@@ -237,6 +247,10 @@ tr:hover {
     
     th, td {
         padding: 8px 10px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        max-width: 120px;
     }
     
     .proof-btn {
@@ -302,10 +316,21 @@ tr:hover {
     /* Tableau très compact */
     table {
         font-size: 0.75em;
+        min-width: 600px;
     }
     
     th, td {
-        padding: 6px 5px;
+        padding: 5px 6px;
+        max-width: 100px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+    
+    .proof-btn {
+        padding: 4px 6px;
+        font-size: 0.65em;
+        white-space: nowrap;
     }
     
     .proof-btn {
