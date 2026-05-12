@@ -34,77 +34,77 @@
                 <td>Cloud avec M365 et Azure Infrastructure</td>
                 <td>2h</td>
                 <td class="hours-comptabilisees">2h</td>
-                <td><img class="proof-thumbnail" src="img/preuve_conf_azure.png" alt="Preuve" onclick="openModal('Preuve', this.src)"></td>
+                <td><button class="proof-btn" onclick="openModal('Cloud avec M365 et Azure Infrastructure', ['img/preuve_conf_azure.png'])">Voir les preuves</button></td>
             </tr>
             <tr>
                 <td>Réseautage</td>
                 <td>Digital Talent Night</td>
                 <td>4h</td>
                 <td class="hours-comptabilisees">4h</td>
-                <td><img class="proof-thumbnail" src="img/digital_talent_night_mail.png" alt="Preuve" onclick="openModal('Preuve', this.src)"></td>
+                <td><button class="proof-btn" onclick="openModal('Digital Talent Night', ['img/digital_talent_night_mail.png', 'img/digital_talent_night.png'])">Voir les preuves</button></td>
             </tr>
             <tr>
                 <td>Electronique</td>
                 <td>Let's Fix IT 2025</td>
                 <td>2h</td>
                 <td class="hours-comptabilisees">2h</td>
-                <td><img class="proof-thumbnail" src="img/LetsFixIT_2025_recto.jpg" alt="Preuve" onclick="openModal('Preuve', this.src)"></td>
+                <td><button class="proof-btn" onclick="openModal('Let\'s Fix IT 2025', ['img/LetsFixIT_2025_recto.jpg'])">Voir les preuves</button></td>
             </tr>
             <tr>
                 <td>Electronique</td>
                 <td>Let's Fix IT 2026</td>
                 <td>3h</td>
                 <td class="hours-comptabilisees">3h</td>
-                <td><img class="proof-thumbnail" src="img/LetsFixIT_2026_recto.jpg" alt="Preuve" onclick="openModal('Preuve', this.src)"></td>
+                <td><button class="proof-btn" onclick="openModal('Let\'s Fix IT 2026', ['img/LetsFixIT_2026_recto.jpg'])">Voir les preuves</button></td>
             </tr>
             <tr>
                 <td>Soft Skills</td>
                 <td>Ultimate Frisbee</td>
                 <td>~250h</td>
                 <td class="hours-comptabilisees">10h</td>
-                <td><img class="proof-thumbnail" src="img/LetsFixIT_2026_recto.jpg" alt="Preuve" onclick="openModal('Preuve', this.src)"></td>
+                <td><button class="proof-btn" onclick="openModal('Ultimate Frisbee', ['img/LetsFixIT_2026_recto.jpg'])">Voir les preuves</button></td>
             </tr>
             <tr>
                 <td>Soft Skills</td>
                 <td>Job étudiant</td>
                 <td>~320h</td>
                 <td class="hours-comptabilisees">0h</td>
-                <td><img class="proof-thumbnail" src="img/LetsFixIT_2026_recto.jpg" alt="Preuve" onclick="openModal('Preuve', this.src)"></td>
+                <td><button class="proof-btn" onclick="openModal('Job étudiant', ['img/LetsFixIT_2026_recto.jpg'])">Voir les preuves</button></td>
             </tr>
             <tr>
                 <td>Hackaton</td>
                 <td>Cyber Security Challenge 2025</td>
                 <td>18h</td>
                 <td class="hours-comptabilisees">10h</td>
-                <td><img class="proof-thumbnail" src="img/preuve_conf_azure.png" alt="Preuve" onclick="openModal('Preuve', this.src)"></td>
+                <td><button class="proof-btn" onclick="openModal('Cyber Security Challenge 2025', ['img/preuve_conf_azure.png'])">Voir les preuves</button></td>
             </tr>
             <tr>
                 <td>Hackaton</td>
                 <td>Cyber Security Challenge 2026</td>
                 <td>18h</td>
                 <td class="hours-comptabilisees">10h</td>
-                <td><img class="proof-thumbnail" src="img/preuve_conf_azure.png" alt="Preuve" onclick="openModal('Preuve', this.src)"></td>
+                <td><button class="proof-btn" onclick="openModal('Cyber Security Challenge 2026', ['img/preuve_conf_azure.png'])">Voir les preuves</button></td>
             </tr>
             <tr>
                 <td>Semaines internationnales</td>
                 <td>Seneca Summer School: IT Mobile apps</td>
                 <td>80h</td>
                 <td class="hours-comptabilisees">0h</td>
-                <td><img class="proof-thumbnail" src="img/preuve_conf_azure.png" alt="Preuve" onclick="openModal('Preuve', this.src)"></td>
+                <td><button class="proof-btn" onclick="openModal('Seneca Summer School', ['img/preuve_conf_azure.png'])">Voir les preuves</button></td>
             </tr>
             <tr>
                 <td>Formations</td>
                 <td>OpenClassrooms - Apprenez à programmer en C#</td>
                 <td>20h</td>
                 <td class="hours-comptabilisees">10h</td>
-                <td><img class="proof-thumbnail" src="img/formation_C.png" alt="Preuve" onclick="openModal('Preuve', this.src)"></td>
+                <td><button class="proof-btn" onclick="openModal('OpenClassrooms - C#', ['img/formation_C.png'])">Voir les preuves</button></td>
             </tr>
             <tr>
                 <td>Formations</td>
                 <td>OpenClassrooms - Learn About Agile Project Management and Scrum</td>
                 <td>6h</td>
                 <td class="hours-comptabilisees">6h</td>
-                <td><img class="proof-thumbnail" src="img/formation_scrum.png" alt="Preuve" onclick="openModal('Preuve', this.src)"></td>
+                <td><button class="proof-btn" onclick="openModal('OpenClassrooms - Scrum', ['img/formation_scrum.png'])">Voir les preuves</button></td>
             </tr>
             <tr style="font-weight: bold; background-color: #ecf0f1;">
                 <td colspan="3" style="text-align: right;">TOTAL</td>
@@ -118,9 +118,16 @@
 <div id="proofModal" class="modal">
     <div class="modal-content">
         <span class="close" onclick="closeModal()">&times;</span>
-        <h2 id="modal-title">Preuve</h2>
-        <img id="proof-image" src="" alt="Preuve non disponible" style="display:none;" />
-        <p id="proof-text" style="display:none;"></p>
+        <h2 id="modal-title">Preuves</h2>
+        <div id="proof-selector" style="text-align: center; margin: 15px 0; display: none;">
+            <label for="proof-select">Choisir une preuve:</label>
+            <select id="proof-select" onchange="displayProof()">
+            </select>
+        </div>
+        <div id="proof-display" style="text-align: center;">
+            <img id="proof-image" src="" alt="Preuve non disponible" style="max-width: 100%; height: auto; border-radius: 4px;" />
+        </div>
+        <div id="proof-counter" style="text-align: center; color: #999; font-size: 0.9em; margin-top: 10px;"></div>
     </div>
 </div>
 
@@ -128,22 +135,49 @@
     const modal = document.getElementById("proofModal");
     const modalTitle = document.getElementById("modal-title");
     const proofImage = document.getElementById("proof-image");
-    const proofText = document.getElementById("proof-text");
+    const proofSelect = document.getElementById("proof-select");
+    const proofSelector = document.getElementById("proof-selector");
+    const proofCounter = document.getElementById("proof-counter");
+    let currentProofs = [];
 
-    function openModal(title, imageUrl) {
+    function openModal(title, proofs) {
         modalTitle.innerText = title;
+        currentProofs = proofs;
         
-        if (imageUrl) {
-            proofImage.src = imageUrl;
-            proofImage.style.display = "block";
-            proofText.style.display = "none";
+        if (proofs.length > 1) {
+            // Afficher le sélecteur si plusieurs preuves
+            proofSelector.style.display = "block";
+            proofSelect.innerHTML = '';
+            proofs.forEach((proof, index) => {
+                const option = document.createElement('option');
+                option.value = index;
+                option.textContent = `Preuve ${index + 1}`;
+                proofSelect.appendChild(option);
+            });
+            proofSelect.value = 0;
         } else {
-            proofImage.style.display = "none";
-            proofText.innerText = "Aucun fichier image trouvé pour cette preuve.";
-            proofText.style.display = "block";
+            // Masquer le sélecteur si une seule preuve
+            proofSelector.style.display = "none";
         }
         
+        displayProof();
         modal.style.display = "block";
+    }
+
+    function displayProof() {
+        const selectedIndex = parseInt(proofSelect.value) || 0;
+        const selectedProof = currentProofs[selectedIndex];
+        
+        if (selectedProof) {
+            proofImage.src = selectedProof;
+            proofImage.style.display = "block";
+            
+            if (currentProofs.length > 1) {
+                proofCounter.textContent = `${selectedIndex + 1} / ${currentProofs.length}`;
+            } else {
+                proofCounter.textContent = '';
+            }
+        }
     }
 
     function closeModal() {
