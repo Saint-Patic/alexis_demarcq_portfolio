@@ -184,3 +184,18 @@ tr:hover {
 .project-link:hover {
     color: #2980b9;
 }
+
+/* Proof Thumbnail Styles */
+.proof-thumbnail {
+    max-width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+    border: 1px solid #ddd;
+}
+.proof-thumbnail:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
