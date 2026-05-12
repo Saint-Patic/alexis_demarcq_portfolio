@@ -140,22 +140,20 @@
     const proofCounter = document.getElementById("proof-counter");
     let currentProofs = [];
 
-    // Définir les preuves pour chaque activité
     const proofsData = [
         { id: 0, title: 'Cloud avec M365 et Azure Infrastructure', proofs: ['img/preuve_conf_azure.png'] },
         { id: 1, title: 'Digital Talent Night', proofs: ['img/digital_talent_night_mail.png', 'img/digital_talent_night.jpg'] },
         { id: 2, title: 'Let\'s Fix IT 2025', proofs: ['img/LetsFixIT_2025_recto.jpg', 'img/LetsFixIT_2025_verso.jpg'] },
         { id: 3, title: 'Let\'s Fix IT 2026', proofs: ['img/LetsFixIT_2026_recto.jpg', 'img/LetsFixIT_2026_verso.jpg'] },
         { id: 4, title: 'Ultimate Frisbee', proofs: ['img/UF_ancien.jpg', 'img/UF_nouveau.jpg'] },
-        { id: 5, title: 'Job étudiant', proofs: [] }, // Pas de preuve
-        { id: 6, title: 'Cyber Security Challenge 2025', proofs: ['img/preuve_conf_azure.png'] },
-        { id: 7, title: 'Cyber Security Challenge 2026', proofs: ['img/preuve_conf_azure.png'] },
+        { id: 5, title: 'Job étudiant', proofs: [] },
+        { id: 6, title: 'Cyber Security Challenge 2025', proofs: ['img/cscbe.png'] },
+        { id: 7, title: 'Cyber Security Challenge 2026', proofs: ['img/cscbe.png'] },
         { id: 8, title: 'Seneca Summer School', proofs: ['img/seneca1.jpg', 'img/seneca2.jpg', 'img/seneca3.jpg', 'img/seneca4.jpg', 'img/seneca5.jpg'] },
-        { id: 9, title: 'OpenClassrooms - C#', proofs: ['img/formation_C.png'] },
-        { id: 10, title: 'OpenClassrooms - Scrum', proofs: ['img/formation_scrum.png'] }
+        { id: 9, title: 'OpenClassrooms - C#', proofs: ['img/formation_C.png', 'img/formation_C2.png', 'img/formation_C3.png'] },
+        { id: 10, title: 'OpenClassrooms - Scrum', proofs: ['img/formation_scrum.png', 'img/formation_scrum2.png', 'img/formation_scrum3.png'] }
     ];
 
-    // Générer les boutons de preuves
     function renderProofButton(id, title, proofs) {
         const element = document.getElementById('proof-' + id);
         if (proofs.length === 0) {
@@ -174,8 +172,11 @@
         modalTitle.innerText = title;
         currentProofs = proofs;
         
+        // Vider l'image immédiatement pour éviter que l'ancienne s'affiche
+        proofImage.src = '';
+        proofImage.style.display = "none";
+        
         if (proofs.length > 1) {
-            // Afficher le sélecteur si plusieurs preuves
             proofSelector.style.display = "block";
             proofSelect.innerHTML = '';
             proofs.forEach((proof, index) => {
@@ -186,11 +187,10 @@
             });
             proofSelect.value = 0;
         } else {
-            // Masquer le sélecteur si une seule preuve
             proofSelector.style.display = "none";
         }
         
-        displayProof(0);  // Toujours commencer à l'index 0
+        displayProof(0);
         modal.style.display = "block";
     }
 
@@ -216,7 +216,6 @@
         modal.style.display = "none";
     }
 
-    // Fermer la modale si on clique en dehors
     window.onclick = function(event) {
         if (event.target == modal) {
             closeModal();
@@ -238,7 +237,6 @@
         document.getElementById('total-hours').textContent = total + 'h';
     }
 
-    // Calculer le total et générer les boutons au chargement de la page
     document.addEventListener('DOMContentLoaded', function() {
         proofsData.forEach(item => {
             renderProofButton(item.id, item.title, item.proofs);
