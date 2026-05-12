@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Alexis Demarcq</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="container">
+    <nav class="navbar">
+        <a href="index.html" class="nav-link">Accueil</a>
+        <a href="portfolio.html" class="nav-link">Portfolio</a>
+        <a href="cv.html" class="nav-link">CV</a>
+        <a href="projet.html" class="nav-link">Projet Professionnel</a>
+    </nav>
+
+    <h1>Portfolio - Alexis Demarcq</h1>
+    <p>Tableau récapitulatif des participations et heures validées.</p>
+    
+    <div class="table-wrapper">
+    <table>
+        <thead>
+            <tr>
+                <th>Thèmes</th>
+                <th>Activités</th>
+                <th>Heures Contribuées</th>
+                <th>Heures Comptabilisées</th>
+                <th>Preuves</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Conférences</td>
+                <td>Cloud avec M365 et Azure Infrastructure</td>
+                <td>2h</td>
+                <td class="hours-comptabilisees">2h</td>
+                <td><span id="proof-0"></span></td>
+            </tr>
+            <tr>
+                <td>Réseautage</td>
+                <td>Digital Talent Night</td>
+                <td>4h</td>
+                <td class="hours-comptabilisees">4h</td>
+                <td><span id="proof-1"></span></td>
+            </tr>
+            <tr>
+                <td>Electronique</td>
+                <td>Let's Fix IT 2025</td>
+                <td>2h</td>
+                <td class="hours-comptabilisees">2h</td>
+                <td><span id="proof-2"></span></td>
+            </tr>
+            <tr>
+                <td>Electronique</td>
+                <td>Let's Fix IT 2026</td>
+                <td>3h</td>
+                <td class="hours-comptabilisees">3h</td>
+                <td><span id="proof-3"></span></td>
+            </tr>
+            <tr>
+                <td>Soft Skills</td>
+                <td>Ultimate Frisbee</td>
+                <td>~250h</td>
+                <td class="hours-comptabilisees">10h</td>
+                <td><span id="proof-4"></span></td>
+            </tr>
+            <tr>
+                <td>Soft Skills</td>
+                <td>Job étudiant</td>
+                <td>~320h</td>
+                <td class="hours-comptabilisees">0h</td>
+                <td><span id="proof-5"></span></td>
+            </tr>
+            <tr>
+                <td>Hackaton</td>
+                <td>Cyber Security Challenge 2025</td>
+                <td>18h</td>
+                <td class="hours-comptabilisees">10h</td>
+                <td><span id="proof-6"></span></td>
+            </tr>
+            <tr>
+                <td>Hackaton</td>
+                <td>Cyber Security Challenge 2026</td>
+                <td>18h</td>
+                <td class="hours-comptabilisees">10h</td>
+                <td><span id="proof-7"></span></td>
+            </tr>
+            <tr>
+                <td>Semaines internationnales</td>
+                <td>Seneca Summer School: IT Mobile apps</td>
+                <td>80h</td>
+                <td class="hours-comptabilisees">0h</td>
+                <td><span id="proof-8"></span></td>
+            </tr>
+            <tr>
+                <td>Formations</td>
+                <td>OpenClassrooms - Apprenez à programmer en C#</td>
+                <td>20h</td>
+                <td class="hours-comptabilisees">10h</td>
+                <td><span id="proof-9"></span></td>
+            </tr>
+            <tr>
+                <td>Formations</td>
+                <td>OpenClassrooms - Learn About Agile Project Management and Scrum</td>
+                <td>6h</td>
+                <td class="hours-comptabilisees">6h</td>
+                <td><span id="proof-10"></span></td>
+            </tr>
+            <tr style="font-weight: bold; background-color: #ecf0f1;">
+                <td colspan="3" style="text-align: right;">TOTAL</td>
+                <td id="total-hours"></td>
+                <td>-</td>
+            </tr>
+        </tbody>
+    </table>
+    </div>
+
+<div id="proofModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <h2 id="modal-title">Preuves</h2>
+        <div id="proof-selector" style="text-align: center; margin: 15px 0; display: none;">
+            <label for="proof-select">Choisir une preuve:</label>
+            <select id="proof-select" onchange="displayProof()">
+            </select>
+        </div>
+        <div id="proof-display" style="text-align: center;">
+            <img id="proof-image" src="" alt="Preuve non disponible" style="max-width: 100%; height: auto; border-radius: 4px;" />
+        </div>
+        <div id="proof-counter" style="text-align: center; color: #999; font-size: 0.9em; margin-top: 10px;"></div>
+    </div>
+</div>
+
+<script>
+    const modal = document.getElementById("proofModal");
+    const modalTitle = document.getElementById("modal-title");
+    const proofImage = document.getElementById("proof-image");
+    const proofSelect = document.getElementById("proof-select");
+    const proofSelector = document.getElementById("proof-selector");
+    const proofCounter = document.getElementById("proof-counter");
+    let currentProofs = [];
+
+    const proofsData = [
+        { id: 0, title: 'Cloud avec M365 et Azure Infrastructure', proofs: ['img/preuve_conf_azure.png'] },
+        { id: 1, title: 'Digital Talent Night', proofs: ['img/digital_talent_night_mail.png', 'img/digital_talent_night.jpg'] },
+        { id: 2, title: 'Let\'s Fix IT 2025', proofs: ['img/LetsFixIT_2025_recto.jpg', 'img/LetsFixIT_2025_verso.jpg'] },
+        { id: 3, title: 'Let\'s Fix IT 2026', proofs: ['img/LetsFixIT_2026_recto.jpg', 'img/LetsFixIT_2026_verso.jpg'] },
+        { id: 4, title: 'Ultimate Frisbee', proofs: ['img/UF_ancien.jpg', 'img/UF_nouveau.jpg'] },
+        { id: 5, title: 'Job étudiant', proofs: [] },
+        { id: 6, title: 'Cyber Security Challenge 2025', proofs: ['img/cscbe.png'] },
+        { id: 7, title: 'Cyber Security Challenge 2026', proofs: ['img/cscbe.png'] },
+        { id: 8, title: 'Seneca Summer School', proofs: ['img/seneca1.jpg', 'img/seneca2.jpg', 'img/seneca3.jpg', 'img/seneca4.jpg', 'img/seneca5.jpg'] },
+        { id: 9, title: 'OpenClassrooms - C#', proofs: ['img/formation_C.png', 'img/formation_C2.png', 'img/formation_C3.png'] },
+        { id: 10, title: 'OpenClassrooms - Scrum', proofs: ['img/formation_scrum.png', 'img/formation_scrum2.png', 'img/formation_scrum3.png'] }
+    ];
+
+    function renderProofButton(id, title, proofs) {
+        const element = document.getElementById('proof-' + id);
+        if (proofs.length === 0) {
+            element.textContent = '-';
+            element.style.color = '#999';
+        } else {
+            const button = document.createElement('button');
+            button.className = 'proof-btn';
+            button.textContent = 'Voir les preuves';
+            button.onclick = () => openModal(title, proofs);
+            element.appendChild(button);
+        }
+    }
+
+    function openModal(title, proofs) {
+        modalTitle.innerText = title;
+        currentProofs = proofs;
+        
+        // Vider l'image immédiatement pour éviter que l'ancienne s'affiche
+        proofImage.src = '';
+        proofImage.style.display = "none";
+        
+        if (proofs.length > 1) {
+            proofSelector.style.display = "block";
+            proofSelect.innerHTML = '';
+            proofs.forEach((proof, index) => {
+                const option = document.createElement('option');
+                option.value = index;
+                option.textContent = `Preuve ${index + 1}`;
+                proofSelect.appendChild(option);
+            });
+            proofSelect.value = 0;
+        } else {
+            proofSelector.style.display = "none";
+        }
+        
+        displayProof(0);
+        modal.style.display = "block";
+    }
+
+    function displayProof(selectedIndex = null) {
+        if (selectedIndex === null) {
+            selectedIndex = parseInt(proofSelect.value) || 0;
+        }
+        const selectedProof = currentProofs[selectedIndex];
+        
+        if (selectedProof) {
+            proofImage.src = selectedProof;
+            proofImage.style.display = "block";
+            
+            if (currentProofs.length > 1) {
+                proofCounter.textContent = `${selectedIndex + 1} / ${currentProofs.length}`;
+            } else {
+                proofCounter.textContent = '';
+            }
+        }
+    }
+
+    function closeModal() {
+        modal.style.display = "none";
+    }
+
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            closeModal();
+        }
+    }
+
+    function calculateTotal() {
+        const hoursCells = document.querySelectorAll('.hours-comptabilisees');
+        let total = 0;
+
+        hoursCells.forEach(cell => {
+            const text = cell.textContent;
+            const hours = parseInt(text.replace('h', ''));
+            if (!isNaN(hours)) {
+                total += hours;
+            }
+        });
+
+        document.getElementById('total-hours').textContent = total + 'h';
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+        proofsData.forEach(item => {
+            renderProofButton(item.id, item.title, item.proofs);
+        });
+        calculateTotal();
+    });
+</script>
+
+</body>
+</html>
