@@ -128,9 +128,12 @@
             </select>
         </div>
         <div id="proof-display" style="text-align: center; overflow: auto; max-height: 60vh;">
-            <img id="proof-image" src="" alt="Preuve non disponible" style="max-width: 100%; height: auto; border-radius: 4px; cursor: zoom-in; transition: width 0.3s ease, max-width 0.3s ease;" onclick="toggleZoom()" />
+            <img id="proof-image" src="" alt="Preuve non disponible" style="max-width: 100%; height: auto; border-radius: 4px; transition: width 0.3s ease, max-width 0.3s ease;" onclick="toggleZoom()" />
         </div>
         <div id="proof-counter" style="text-align: center; color: #999; font-size: 0.9em; margin-top: 10px;"></div>
+        <div style="text-align: center; margin-top: 15px;">
+            <button class="proof-btn" style="background-color: #8B9467;" onclick="openFullscreen()"><i class="fas fa-expand"></i> Plein écran</button>
+        </div>
     </div>
 </div>
 
@@ -145,6 +148,9 @@
     let isZoomed = false;
 
     function toggleZoom() {
+        // Désactiver le zoom JS sur mobile/tablette pour laisser le zoom natif
+        if (window.innerWidth <= 768) return;
+
         isZoomed = !isZoomed;
         if (isZoomed) {
             proofImage.style.maxWidth = "none";
@@ -225,7 +231,7 @@
             isZoomed = false;
             proofImage.style.maxWidth = "100%";
             proofImage.style.width = "auto";
-            proofImage.style.cursor = "zoom-in";
+            proofImage.style.cursor = window.innerWidth <= 768 ? "default" : "zoom-in";
             
             if (currentProofs.length > 1) {
                 proofCounter.textContent = `${selectedIndex + 1} / ${currentProofs.length}`;
@@ -237,6 +243,16 @@
 
     function closeModal() {
         modal.style.display = "none";
+    }
+
+    function openFullscreen() {
+        if (proofImage.requestFullscreen) {
+            proofImage.requestFullscreen();
+        } else if (proofImage.webkitRequestFullscreen) { /* Safari */
+            proofImage.webkitRequestFullscreen();
+        } else if (proofImage.msRequestFullscreen) { /* IE11 */
+            proofImage.msRequestFullscreen();
+        }
     }
 
     window.onclick = function(event) {
