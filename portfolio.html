@@ -18,7 +18,7 @@
     </nav>
 
     <h1>Portfolio - Alexis Demarcq</h1>
-    <p>Tableau récapitulatif des participations et heures validées.</p>
+    <h3>Tableau récapitulatif des participations et heures validées.</h3>
     
     <div class="table-wrapper">
     <table>
@@ -127,8 +127,8 @@
             <select id="proof-select" onchange="displayProof()">
             </select>
         </div>
-        <div id="proof-display" style="text-align: center;">
-            <img id="proof-image" src="" alt="Preuve non disponible" style="max-width: 100%; height: auto; border-radius: 4px;" />
+        <div id="proof-display" style="text-align: center; overflow: auto; max-height: 60vh;">
+            <img id="proof-image" src="" alt="Preuve non disponible" style="max-width: 100%; height: auto; border-radius: 4px; cursor: zoom-in; transition: width 0.3s ease, max-width 0.3s ease;" onclick="toggleZoom()" />
         </div>
         <div id="proof-counter" style="text-align: center; color: #999; font-size: 0.9em; margin-top: 10px;"></div>
     </div>
@@ -142,6 +142,20 @@
     const proofSelector = document.getElementById("proof-selector");
     const proofCounter = document.getElementById("proof-counter");
     let currentProofs = [];
+    let isZoomed = false;
+
+    function toggleZoom() {
+        isZoomed = !isZoomed;
+        if (isZoomed) {
+            proofImage.style.maxWidth = "none";
+            proofImage.style.width = "200%";
+            proofImage.style.cursor = "zoom-out";
+        } else {
+            proofImage.style.maxWidth = "100%";
+            proofImage.style.width = "auto";
+            proofImage.style.cursor = "zoom-in";
+        }
+    }
 
     const proofsData = [
         { id: 0, title: 'Cloud avec M365 et Azure Infrastructure', proofs: ['img/preuve_conf_azure.png'] },
@@ -206,6 +220,12 @@
         if (selectedProof) {
             proofImage.src = selectedProof;
             proofImage.style.display = "block";
+            
+            // Réinitialiser le zoom
+            isZoomed = false;
+            proofImage.style.maxWidth = "100%";
+            proofImage.style.width = "auto";
+            proofImage.style.cursor = "zoom-in";
             
             if (currentProofs.length > 1) {
                 proofCounter.textContent = `${selectedIndex + 1} / ${currentProofs.length}`;
