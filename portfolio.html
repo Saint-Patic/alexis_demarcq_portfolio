@@ -131,7 +131,7 @@
             <img id="proof-image" src="" alt="Preuve non disponible" style="max-width: 100%; height: auto; border-radius: 4px; transition: width 0.3s ease, max-width 0.3s ease;" onclick="toggleZoom()" />
         </div>
         <div id="proof-counter" style="text-align: center; color: #999; font-size: 0.9em; margin-top: 10px;"></div>
-        <div style="text-align: center; margin-top: 15px;">
+        <div id="fullscreen-btn-container" style="text-align: center; margin-top: 15px;">
             <button class="proof-btn" style="background-color: #8B9467;" onclick="openFullscreen()"><i class="fas fa-expand"></i> Plein écran</button>
         </div>
     </div>
@@ -198,6 +198,14 @@
         // Vider l'image immédiatement pour éviter que l'ancienne s'affiche
         proofImage.src = '';
         proofImage.style.display = "none";
+        
+        // Gérer l'affichage du bouton plein écran selon la taille de l'écran
+        const fullscreenBtn = document.getElementById("fullscreen-btn-container");
+        if (window.innerWidth <= 768) {
+            fullscreenBtn.style.display = "none";
+        } else {
+            fullscreenBtn.style.display = "block";
+        }
         
         if (proofs.length > 1) {
             proofSelector.style.display = "block";
